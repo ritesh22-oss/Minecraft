@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minecraft Memories Timeline</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <!-- Minecraft Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-background"></div>
+    <!-- Pixel Art Decorations -->
+    <div class="pixel-block" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+    <div class="pixel-block" style="top: 20%; right: 10%; animation-delay: 1s;"></div>
+    <div class="pixel-block" style="bottom: 15%; left: 15%; animation-delay: 2s;"></div>
+    <div class="pixel-block" style="bottom: 25%; right: 5%; animation-delay: 3s;"></div>
+    <!-- Floating Particles -->
+    <div class="minecraft-particle" style="top: 30%; left: 20%;"></div>
+    <div class="minecraft-particle" style="top: 60%; left: 80%;"></div>
+    <div class="minecraft-particle" style="top: 80%; left: 30%;"></div>
+    <div class="minecraft-particle" style="top: 40%; left: 70%;"></div>
+    <div class="loading-content">
+      <h1 class="loading-title">Minecraft Memories</h1>
+      <div class="loading-bar-container">
+        <div class="loading-bar">
+          <div class="loading-progress"></div>
+        </div>
+      </div>
+      <p class="loading-text" id="loading-text">Loading Minecraft Memories...</p>
+    </div>
+    <!-- Background Music -->
+    <audio id="background-music" loop>
+      <source src="hello.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <!-- Main Content (initially hidden) -->
+  <div id="main-content" class="main-content hidden">
+    <header>
+      <h1>Minecraft Memories</h1>
+      <div class="header-actions">
+        <button id="add-photo-btn" class="primary-action-btn">
+          <i class="fa-solid fa-image"></i> Add Photo
+        </button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle Day/Night">
+          <i class="fa-solid fa-sun" id="theme-icon"></i>
+        </button>
+      </div>
+    </header>
+
+    <nav class="timeline-nav">
+      <button class="timeline-tab active" data-timeline="2024">2024</button>
+      <button class="timeline-tab" data-timeline="2025">2025</button>
+      <button class="timeline-tab" data-timeline="2026">2026</button>
+    </nav>
+
+    <main id="timeline-container" class="timeline-gallery" aria-label="Photo timeline">
+      <!-- Timeline entries will be injected here -->
+    </main>
+
+    <!-- Decorative pixel clouds and stars -->
+    <div class="pixel-cloud light" style="top:8vh; left:5vw; width:60px; height:24px;"></div>
+    <div class="pixel-cloud light" style="top:18vh; left:60vw; width:80px; height:28px; animation-delay:3s;"></div>
+    <div class="pixel-cloud dark" style="top:70vh; left:20vw; width:50px; height:20px; display:none;"></div>
+    <div class="pixel-cloud dark" style="top:40vh; left:80vw; width:70px; height:26px; animation-delay:7s; display:none;"></div>
+    <div class="pixel-star light" style="top:12vh; left:30vw;"></div>
+    <div class="pixel-star light" style="top:22vh; left:80vw;"></div>
+    <div class="pixel-star light" style="top:60vh; left:10vw;"></div>
+    <div class="pixel-star dark" style="top:18vh; left:50vw; display:none;"></div>
+    <div class="pixel-star dark" style="top:70vh; left:90vw; display:none;"></div>
+
+    <footer>
+      <div class="footer-actions">
+        <button id="music-btn" class="footer-anim-btn" title="Toggle Music">
+          <i class="fa-solid fa-music"></i> Music
+        </button>
+      </div>
+      <p class="footer-credit">Crafted with <span class="footer-heart">❤️</span> by Us</p>
+    </footer>
+    <div class="creative-bg">
+      <!-- Decorative floating blocks and sparkles will be styled in CSS -->
+    </div>
+    <div class="nostalgia-vignette"></div>
+  </div>
+
+  <input id="photo-input" type="file" accept="image/png,image/jpeg" hidden />
+
+  <div id="photo-modal" class="photo-modal hidden" role="dialog" aria-modal="true" aria-labelledby="photo-modal-title">
+    <div class="photo-modal-content">
+      <div class="photo-modal-header">
+        <h2 id="photo-modal-title">Add Photo</h2>
+        <button id="close-photo-modal" class="close-modal-btn" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <p id="photo-error" class="photo-error hidden"></p>
+
+      <div class="photo-preview-workspace">
+        <div id="photo-preview-stage" class="photo-preview-stage">
+          <img id="photo-preview" class="photo-preview-img hidden" alt="Full photo preview" />
+          <div id="photo-loading" class="photo-loading hidden">Processing image...</div>
+        </div>
+      </div>
+
+      <div class="controls-grid">
+        <label class="field-label" for="photo-year">Year</label>
+        <select id="photo-year" class="field-input"></select>
+
+        <label class="field-label" for="photo-caption">Caption</label>
+        <textarea id="photo-caption" class="field-input" rows="2" maxlength="140" placeholder="Write your caption..."></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button id="save-photo-btn" class="primary-action-btn" disabled>Save</button>
+        <button id="cancel-photo-btn" class="secondary-action-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
